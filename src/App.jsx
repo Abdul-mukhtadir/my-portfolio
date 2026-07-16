@@ -23,8 +23,8 @@ import {
 /* ---------------------------------------------------------
    EMBEDDED ASSETS
 --------------------------------------------------------- */
-const PROFILE_URI = "/Profile.jpeg";
-const RESUME_URI = "/resume.pdf";
+const PROFILE_URI = "/My picc.jpg";
+const RESUME_URI = "/Mukhtadir_resume.pdf";
 const CERT_URI = "/certificate.jpg";
 /* ---------------------------------------------------------
    DATA
@@ -307,7 +307,7 @@ function HomeView({ go }) {
         </button>
         <a
           href={RESUME_URI}
-          download="Abdul_Mukhtadir_Shaik_Resume.pdf"
+          download="Mukhtadir_resume.pdf"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-slate-700 text-slate-200 font-semibold text-sm hover:border-teal-400 hover:text-teal-300 hover:scale-[1.03] active:scale-[0.98] transition-all"
         >
           <Download size={16} /> Download Resume
@@ -609,7 +609,7 @@ function ContactView() {
 
       <a
         href={RESUME_URI}
-        download="Abdul_Mukhtadir_Shaik_Resume.pdf"
+        download="Mukhtadir_resume.pdf"
         style={{ boxShadow: "0 0 24px rgba(251,191,36,0.35)" }}
         className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-amber-400 text-slate-900 font-semibold text-sm hover:bg-amber-300 hover:scale-[1.03] active:scale-[0.98] transition-transform"
       >
