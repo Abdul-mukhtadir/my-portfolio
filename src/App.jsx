@@ -21,11 +21,15 @@ import {
 } from "lucide-react";
 
 /* ---------------------------------------------------------
-   EMBEDDED ASSETS
+   ASSETS
+   These point to files in the /public folder. To update your
+   photo, resume, or certificate, just replace the file with
+   the SAME name inside /public — no code changes needed.
 --------------------------------------------------------- */
 const PROFILE_URI = "/My picc.jpg";
-const RESUME_URI = "/Mukhtadir_resume.pdf";
+const RESUME_URI = "/SAM Resume.pdf";
 const CERT_URI = "/certificate.jpg";
+
 /* ---------------------------------------------------------
    DATA
 --------------------------------------------------------- */
@@ -70,6 +74,8 @@ const PROJECTS = [
     id: "hotel",
     name: "Hotel Booking System",
     tagline: "Full-stack hotel booking platform with payments & admin control",
+    description:
+      "A full-stack hotel booking platform where users can search hotels, check real-time room availability, book rooms, pay securely online, and manage their reservations. Admins get a full dashboard to manage hotels, rooms, bookings, and users.",
     icon: "hotel",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Razorpay", "Tailwind CSS"],
     features: [
@@ -80,7 +86,8 @@ const PROJECTS = [
       "Admin dashboard with full CRUD for hotels and rooms",
       "Fully responsive UI built with Tailwind CSS and RESTful APIs",
     ],
-    github: "https://github.com/Abdul-mukhtadir/hotel-booking-system",
+    githubFrontend: "https://github.com/Abdul-mukhtadir/hotel-booking-system/tree/main/client",
+    githubBackend: "https://github.com/Abdul-mukhtadir/hotel-booking-system/tree/main/server",
     live: "https://hotelsyst.netlify.app/",
     backend: "https://hotel-booking-system-dcg4.onrender.com/",
   },
@@ -88,6 +95,8 @@ const PROJECTS = [
     id: "recipe",
     name: "Recipe Application",
     tagline: "Recipe management app with secure auth and role-based permissions",
+    description:
+      "A recipe management application where users can create, browse, and manage recipes with secure authentication. Built with a React front end and an Express/MongoDB back end for persistent data storage.",
     icon: "recipe",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS", "Axios"],
     features: [
@@ -97,7 +106,8 @@ const PROJECTS = [
       "Responsive, mobile-first UI using React.js and Tailwind CSS",
       "Role-based access control separating admin and standard users",
     ],
-    github: "https://github.com/Abdul-mukhtadir/recipe-app",
+    githubFrontend: "https://github.com/Abdul-mukhtadir/recipe-app",
+    githubBackend: "https://github.com/Abdul-mukhtadir/recipe-app",
     live: "https://recipeg.netlify.app/",
     backend: null,
   },
@@ -105,6 +115,8 @@ const PROJECTS = [
     id: "expense",
     name: "Smart Expense Tracker",
     tagline: "Track and visualize everyday spending in a clean MERN dashboard",
+    description:
+      "A capstone-style expense tracking dashboard where users can add, categorize, and review day-to-day expenses, with a clean visual breakdown of spending patterns. Built on the MERN stack.",
     icon: "expense",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     features: [
@@ -112,7 +124,9 @@ const PROJECTS = [
       "Dashboard view for spending patterns at a glance",
       "Built on the MERN stack as part of a hands-on GUVI project series",
     ],
-    github:
+    githubFrontend:
+      "https://github.com/Abdul-mukhtadir/GuviTasks/tree/21f3388a5305012c9ae371e7b7cf22877509a083/Task%208/smart-expense-tracker",
+    githubBackend:
       "https://github.com/Abdul-mukhtadir/GuviTasks/tree/21f3388a5305012c9ae371e7b7cf22877509a083/Task%208/smart-expense-tracker",
     live: "https://smartexptrack.netlify.app/",
     backend: null,
@@ -307,7 +321,7 @@ function HomeView({ go }) {
         </button>
         <a
           href={RESUME_URI}
-          download="Mukhtadir_resume.pdf"
+          download="SAM Resume.pdf"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-slate-700 text-slate-200 font-semibold text-sm hover:border-teal-400 hover:text-teal-300 hover:scale-[1.03] active:scale-[0.98] transition-all"
         >
           <Download size={16} /> Download Resume
@@ -409,8 +423,8 @@ function AboutView() {
       <p className="text-slate-300 leading-relaxed mt-4">
         I am eager to begin my career in a{" "}
         <span className="text-amber-300">Software Developer</span>,{" "}
-        <span className="text-amber-300">Full-Stack Developer</span>{" "}
-         role where I can
+        <span className="text-amber-300">Full-Stack Developer</span>, or{" "}
+        <span className="text-amber-300">Semi-IT</span> role where I can
         contribute while continuously enhancing my technical skills.
       </p>
 
@@ -488,6 +502,7 @@ function ProjectsView() {
               <div className="md:col-span-3">
                 <h3 className="text-xl font-semibold text-slate-100">{p.name}</h3>
                 <p className="text-slate-400 text-sm mt-1">{p.tagline}</p>
+                <p className="text-slate-300 text-sm mt-3 leading-relaxed">{p.description}</p>
 
                 <div className="flex flex-wrap gap-1.5 mt-3">
                   {p.tech.map((t) => (
@@ -506,13 +521,23 @@ function ProjectsView() {
 
                 <div className="flex flex-wrap gap-3 mt-5">
                   <a
-                    href={p.github}
+                    href={p.githubFrontend}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md border border-slate-700 text-slate-300 hover:border-slate-400 transition-colors"
                   >
-                    <Github size={13} /> Source
+                    <Github size={13} /> Frontend Code
                   </a>
+                  {p.githubBackend && p.githubBackend !== p.githubFrontend && (
+                    <a
+                      href={p.githubBackend}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md border border-slate-700 text-slate-300 hover:border-slate-400 transition-colors"
+                    >
+                      <Github size={13} /> Backend Code
+                    </a>
+                  )}
                   {p.live && (
                     <a
                       href={p.live}
@@ -530,7 +555,7 @@ function ProjectsView() {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md border border-amber-400/40 text-amber-300 hover:bg-amber-400/10 transition-colors"
                     >
-                      <Server size={13} /> API
+                      <Server size={13} /> Live API
                     </a>
                   )}
                 </div>
@@ -587,6 +612,69 @@ function CertificationsView() {
   );
 }
 
+function ContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Portfolio contact from ${name || "Website visitor"}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="block text-xs font-mono text-slate-500 mb-1.5">Name</label>
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Your name"
+          className="w-full bg-slate-900/60 border border-slate-700 rounded-md px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-teal-400/60 transition-colors"
+        />
+      </div>
+      <div>
+        <label className="block text-xs font-mono text-slate-500 mb-1.5">Email</label>
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="w-full bg-slate-900/60 border border-slate-700 rounded-md px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-teal-400/60 transition-colors"
+        />
+      </div>
+      <div>
+        <label className="block text-xs font-mono text-slate-500 mb-1.5">Message</label>
+        <textarea
+          required
+          rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Tell me about the role or opportunity..."
+          className="w-full bg-slate-900/60 border border-slate-700 rounded-md px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-teal-400/60 transition-colors resize-none"
+        />
+      </div>
+      <button
+        type="submit"
+        style={{ boxShadow: "0 0 24px rgba(251,191,36,0.35)" }}
+        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-amber-400 text-slate-900 font-semibold text-sm hover:bg-amber-300 hover:scale-[1.03] active:scale-[0.98] transition-transform"
+      >
+        <Mail size={16} /> Send Message
+      </button>
+      <p className="text-xs text-slate-600">
+        This opens your email app with the message pre-filled, addressed to {EMAIL}.
+      </p>
+    </form>
+  );
+}
+
 function ContactView() {
   return (
     <div className="max-w-2xl">
@@ -595,6 +683,20 @@ function ContactView() {
         I'm actively looking for opportunities as a Full-Stack / MERN
         Developer. Feel free to reach out — I usually reply within a day.
       </p>
+
+      <div className="rounded-lg border border-slate-800 bg-slate-900/40 overflow-hidden mb-6">
+        <div className="px-4 py-2 border-b border-slate-800 text-slate-500 text-xs font-mono">Send a Message</div>
+        <div className="p-5">
+          <ContactForm />
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3 mb-6">
+        <IconLink href={LINKEDIN} icon={Linkedin} label="LinkedIn" />
+        <IconLink href={GITHUB} icon={Github} label="GitHub" />
+        <IconLink href={`mailto:${EMAIL}`} icon={Mail} label="Email" />
+      </div>
+
       <div className="rounded-lg border border-slate-800 bg-slate-900/40 font-mono text-sm overflow-hidden">
         <div className="px-4 py-2 border-b border-slate-800 text-slate-500 text-xs">Contact Details</div>
         <div className="p-5 space-y-3">
@@ -609,7 +711,7 @@ function ContactView() {
 
       <a
         href={RESUME_URI}
-        download="Mukhtadir_resume.pdf"
+        download="SAM Resume.pdf"
         style={{ boxShadow: "0 0 24px rgba(251,191,36,0.35)" }}
         className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-amber-400 text-slate-900 font-semibold text-sm hover:bg-amber-300 hover:scale-[1.03] active:scale-[0.98] transition-transform"
       >
