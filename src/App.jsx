@@ -27,7 +27,7 @@ import {
    the SAME name inside /public — no code changes needed.
 --------------------------------------------------------- */
 const PROFILE_URI = "/My picc.jpg";
-const RESUME_URI = "/SAM Resume.pdf";
+const RESUME_URI = "/resume.pdf";
 const CERT_URI = "/certificate.jpg";
 
 /* ---------------------------------------------------------
@@ -94,35 +94,36 @@ const PROJECTS = [
   {
     id: "recipe",
     name: "Recipe Application",
-    tagline: "Recipe management app with secure auth and role-based permissions",
+    tagline: "Recipe discovery app powered by a public recipes API",
     description:
-      "A recipe management application where users can create, browse, and manage recipes with secure authentication. Built with a React front end and an Express/MongoDB back end for persistent data storage.",
+      "A recipe discovery and browsing app where users can search recipes, view detailed cooking instructions, and save favorites locally. Built as a React front end consuming a public recipes API, with a fully responsive, mobile-first interface.",
     icon: "recipe",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS", "Axios"],
+    tech: ["React.js", "Tailwind CSS", "Axios", "REST API"],
     features: [
-      "Create, browse, and manage recipes in a full-stack app",
-      "JWT authentication with secure login/registration & bcrypt hashing",
-      "RESTful API endpoints built with Express.js and MongoDB",
+      "Search and browse recipes pulled from a public recipes API",
+      "View detailed ingredients and step-by-step cooking instructions",
+      "Save favorite recipes locally for quick access",
       "Responsive, mobile-first UI using React.js and Tailwind CSS",
-      "Role-based access control separating admin and standard users",
+      "Clean component architecture with Axios-based API integration",
     ],
     githubFrontend: "https://github.com/Abdul-mukhtadir/recipe-app",
-    githubBackend: "https://github.com/Abdul-mukhtadir/recipe-app",
+    githubBackend: null,
     live: "https://recipeg.netlify.app/",
     backend: null,
   },
   {
     id: "expense",
     name: "Smart Expense Tracker",
-    tagline: "Track and visualize everyday spending in a clean MERN dashboard",
+    tagline: "GUVI Capstone Project — full-stack expense tracking dashboard",
+    isCapstone: true,
     description:
-      "A capstone-style expense tracking dashboard where users can add, categorize, and review day-to-day expenses, with a clean visual breakdown of spending patterns. Built on the MERN stack.",
+      "My GUVI Capstone Project: a full-stack expense tracking dashboard where users can add, categorize, and review day-to-day expenses, with a clean visual breakdown of spending patterns across the MERN stack.",
     icon: "expense",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     features: [
       "Add, categorize, and review day-to-day expenses",
       "Dashboard view for spending patterns at a glance",
-      "Built on the MERN stack as part of a hands-on GUVI project series",
+      "Built end-to-end on the MERN stack as my GUVI Capstone Project",
     ],
     githubFrontend:
       "https://github.com/Abdul-mukhtadir/GuviTasks/tree/21f3388a5305012c9ae371e7b7cf22877509a083/Task%208/smart-expense-tracker",
@@ -321,7 +322,7 @@ function HomeView({ go }) {
         </button>
         <a
           href={RESUME_URI}
-          download="SAM Resume.pdf"
+          download="SAM_Resumee.pdf"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-slate-700 text-slate-200 font-semibold text-sm hover:border-teal-400 hover:text-teal-300 hover:scale-[1.03] active:scale-[0.98] transition-all"
         >
           <Download size={16} /> Download Resume
@@ -500,7 +501,14 @@ function ProjectsView() {
                 <BrowserMock url={p.live} kind={p.icon} />
               </div>
               <div className="md:col-span-3">
-                <h3 className="text-xl font-semibold text-slate-100">{p.name}</h3>
+                <h3 className="text-xl font-semibold text-slate-100 flex items-center gap-2 flex-wrap">
+                  {p.name}
+                  {p.isCapstone && (
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-violet-400/40 text-violet-300 bg-violet-400/10">
+                      Capstone Project
+                    </span>
+                  )}
+                </h3>
                 <p className="text-slate-400 text-sm mt-1">{p.tagline}</p>
                 <p className="text-slate-300 text-sm mt-3 leading-relaxed">{p.description}</p>
 
@@ -711,7 +719,7 @@ function ContactView() {
 
       <a
         href={RESUME_URI}
-        download="SAM Resume.pdf"
+        download="SAM_Resumee.pdf"
         style={{ boxShadow: "0 0 24px rgba(251,191,36,0.35)" }}
         className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-amber-400 text-slate-900 font-semibold text-sm hover:bg-amber-300 hover:scale-[1.03] active:scale-[0.98] transition-transform"
       >
